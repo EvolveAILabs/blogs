@@ -4,6 +4,7 @@ import datarobotx as drx
 import joblib
 import requests
 import json
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 mimetype = 'text/plain'
 charset = 'UTF-8'
@@ -18,12 +19,28 @@ headers = {
     }
 url = API_URL.format(deployment_id=DEPLOYMENT_ID)
 
+history_placeholder = MessagesPlaceholder("history")
+prompt_template = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant."),
+    history_placeholder,
+    ("human", "{question}")
+])
+
 st.title("Chat Bot with DR Deployment")
 
-def get_deployment_response(prompt, model):
-    data = json.dumps({
+def get_deployment_response(prompt):
+    history = st.session_state.messages
+    history = [(i['role'],i['content']) for i in history]
+
+    prompt_value = prompt_template.invoke({
+        "history": history,
         "question": prompt
         })
+
+    data = json.dumps({
+        "question": prompt_value.to_string()
+        })
+    
     predictions_response = requests.post(
         url,
         data=data,
