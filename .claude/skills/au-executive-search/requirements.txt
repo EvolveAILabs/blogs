@@ -1,0 +1,11 @@
+# Python dependencies for the Australian Executive Search Research Analyst skill
+# Install with: pip install -r requirements.txt
+
+# Anthropic Claude API client
+anthropic>=0.39.0
+
+# Optional: For enhanced JSON validation
+jsonschema>=4.17.0
+
+# Optional: For data analysis of results
+pandas>=2.0.0
