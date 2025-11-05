@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Associate Director - Job Role Specification</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 50px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .role-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .role-meta {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .meta-label {
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .meta-value {
+            font-weight: 400;
+        }
+
+        .content {
+            padding: 50px 60px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .experience-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .experience-item {
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            padding: 20px 24px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-item:hover {
+            background: #f1f5f9;
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+
+        .experience-item::before {
+            content: '✓';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .experience-description {
+            color: #334155;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .tag.secondary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .qualifications-list {
+            display: grid;
+            gap: 16px;
+        }
+
+        .qualification-item {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #fbbf24;
+            padding: 20px 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: start;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .qualification-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
+        }
+
+        .qualification-icon {
+            width: 32px;
+            height: 32px;
+            background: #f59e0b;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .qualification-text {
+            color: #78350f;
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .location-badge {
+            background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(236, 72, 153, 0.3);
+        }
+
+        .location-icon {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 30px;
+            }
+
+            .content {
+                padding: 40px 30px;
+            }
+
+            .role-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .role-meta {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .role-title {
+                font-size: 1.75rem;
+            }
+
+            .role-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .meta-item {
+                width: 100%;
+            }
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #e2e8f0 50%, transparent 100%);
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="role-title">Associate Director, Financial Management and Commercial</h1>
+            <div class="role-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Seniority:</span>
+                    <span class="meta-value">Senior Executive</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Function:</span>
+                    <span class="meta-value">Finance</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">
+                    <div class="section-icon">📋</div>
+                    Must-Have Experience
+                </h2>
+                <div class="experience-grid">
+                    <div class="experience-item">
+                        <p class="experience-description">Senior leadership and financial management role within complex organisation with robust governance structures</p>
+                    </div>
+                    <div class="experience-item">
+                        <p class="experience-description">Budget development and management, financial analysis and reporting, cost models, scenario analysis</p>
+                    </div>
+                    <div class="experience-item">
+                        <p class="experience-description">People leadership and management skills, coaching and managing teams for performance</p>
+                    </div>
+                    <div class="experience-item">
+                        <p class="experience-description">Business partnership solutions and stakeholder relationship management</p>
+                    </div>
+                    <div class="experience-item">
+                        <p class="experience-description">Initiating and leading change, innovation and problem-solving</p>
+                    </div>
+                    <div class="experience-item">
+                        <p class="experience-description">Policy development and business systems implementation</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <div class="section-icon">🎯</div>
+                    Target Sectors
+                </h2>
+                <div class="tags-container">
+                    <div class="tag">Higher Education</div>
+                    <div class="tag">Education</div>
+                    <div class="tag">Government</div>
+                    <div class="tag">Public Sector</div>
+                    <div class="tag">Complex Organizations</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <div class="section-icon">🏢</div>
+                    Target Company Types
+                </h2>
+                <div class="tags-container">
+                    <div class="tag secondary">Government</div>
+                    <div class="tag secondary">NFP</div>
+                    <div class="tag secondary">Public</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <div class="section-icon">🎓</div>
+                    Mandatory Qualifications
+                </h2>
+                <div class="qualifications-list">
+                    <div class="qualification-item">
+                        <div class="qualification-icon">!</div>
+                        <p class="qualification-text">Postgraduate qualification in Business or Commerce</p>
+                    </div>
+                    <div class="qualification-item">
+                        <div class="qualification-icon">!</div>
+                        <p class="qualification-text">Current membership with Australian Society of Certified Practicing Accountants or equivalent industry body</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <div class="section-icon">📍</div>
+                    Location
+                </h2>
+                <div class="location-badge">
+                    <span class="location-icon">🇦🇺</span>
+                    <span>Australia</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
